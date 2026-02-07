@@ -10,8 +10,10 @@ function Home() {
     /*whenever rerendered, if not using in state, it will be lost*/
     const [searchQuery, setSearchQuery] = useState("");
     const [movies, setMovies] = useState([]);
+    const [allMovies, setAllMovies] = useState([]); // Store original list
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [sortBy, setSortBy] = useState("default"); // default, rating, release_date
 
     /*use effect is a hook that runs a function when the component loads or when a dependency changes*/
     /*if changed*/
@@ -20,6 +22,7 @@ function Home() {
         const loadPopularMovies = async() => {
             try {
                 const popularMovies = await fetchPopularMovies()
+                setAllMovies(popularMovies)
                 setMovies(popularMovies)
 
             } catch (error) {
@@ -42,6 +45,7 @@ function Home() {
         setSearchQuery("")
         try{
             const searchResults = await findMovies(searchQuery)
+            setAllMovies(searchResults)
             setMovies(searchResults)
             setError(null)
 
@@ -54,6 +58,25 @@ function Home() {
         }
         setSearchQuery("")
 
+    };
+    
+    // Sort function
+    const handleSort = (sortType) => {
+        setSortBy(sortType)
+        let sortedMovies = [...allMovies]
+        
+        switch(sortType) {
+            case 'rating':
+                sortedMovies.sort((a, b) => b.vote_average - a.vote_average)
+                break
+            case 'release_date':
+                sortedMovies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+                break
+            default:
+                sortedMovies = [...allMovies] // Keep original order
+        }
+        
+        setMovies(sortedMovies)
     };
     /*map is a function that takes in a array and iterates and deals with every element the function is a jsx code*/
     /*dynamical rendering*/
@@ -69,7 +92,23 @@ function Home() {
                 />
                 <button type="submit" className="search-button">Search</button>
             </form>
-                {error && <div className="error-message">{error}</div>}
+            
+            {/* Filter Section */}
+            <div className="filter-section">
+                <label htmlFor="sort-select" className="filter-label">Sort by:</label>
+                <select 
+                    id="sort-select"
+                    className="filter-select" 
+                    value={sortBy} 
+                    onChange={(e) => handleSort(e.target.value)}
+                >
+                    <option value="default">Default</option>
+                    <option value="rating">Rating (High to Low)</option>
+                    <option value="release_date">Release Date (Newest)</option>
+                </select>
+            </div>
+            
+            {error && <div className="error-message">{error}</div>}
             
             {loading ? (
                 <div className="loading">Loading...</div>
