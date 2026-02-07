@@ -1,16 +1,29 @@
-# React + Vite
+# FilmFinder
+A React web app displaying a database of movies using The Movie Database (TMDB) API.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- Browse popular movies
+- Search for movies
+- Like/unlike movies with heart button
+- Persistent likes stored in localStorage
+- Movie information including ratings, release year, and runtime
+- Responsive design with compact movie cards
 
-Currently, two official plugins are available:
+## Technologies Used
+- React + Vite
+- The Movie Database (TMDB) API
+- React Router for navigation
+- Context API for state management
+- CSS3 for styling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Add your TMDB API key to `.env` file:
+   ```
+   VITE_TMDB_API_KEY=your_api_key_here
+   ```
+4. Run the development server: `npm run dev`
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## API Key
+This app uses The Movie Database (TMDB) API. Get your free API key at [themoviedb.org](https://www.themoviedb.org/documentation/api).
