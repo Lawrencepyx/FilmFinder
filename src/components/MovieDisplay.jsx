@@ -14,6 +14,7 @@ function MovieDisplay({movie}) {
     }
     /*css class*/
     /*braces mean variables like f strings in python*/
+    /*Display image with data*/
     return <div className={`movie-display ${liked ? "liked" : ""}`}>
         <div className="movie-poster">
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>

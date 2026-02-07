@@ -5,9 +5,10 @@ const MovieContext = createContext()
 export const useMovieContext = () => useContext(MovieContext)
 /*children is anything inside the provider that you need rerendered*/
 export const MovieProvider = ({children}) => {
-    
+    /*constanly update for likes*/
     const [likes, setLikes] = useState([])
     
+    /*local storage*/
     useEffect(() => {
         const storedLikes = localStorage.getItem("likes")
         if (storedLikes) setLikes(JSON.parse(storedLikes))
@@ -30,6 +31,7 @@ export const MovieProvider = ({children}) => {
         return likes.some(movie => movie.id === movieID)
     }
 
+    /*keep track of state*/
     const value = {
         likes,
         addToLikes,

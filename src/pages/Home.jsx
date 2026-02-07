@@ -35,9 +35,12 @@ function Home() {
         }
     loadPopularMovies()
     }, [])
+    /*empty array means it only runs once when the component loads*/
+    /*get movies from the search bar*/
+    
     const handleSearch = async (e) =>{
         e.preventDefault()
-
+        /*if it is still loading, don't do anything*/
         if (!searchQuery.trim()) return
         setLoading(true)
         if (loading) return
@@ -56,6 +59,7 @@ function Home() {
         } finally{
             setLoading(false)
         }
+        /*reset search query after searching, so it clears the search bar after you search for something*/
         setSearchQuery("")
 
     };

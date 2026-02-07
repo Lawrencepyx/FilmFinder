@@ -4,6 +4,7 @@ import MovieDisplay from "../components/MovieDisplay"
 /*npm install react-router-dom to use router, to add different pages*/
 function Likes(){
     const {likes} = useMovieContext()
+    /*display liked movies, if no liked movies, display message*/
     if (likes && likes.length > 0) {
         return (
             <div className="likes">

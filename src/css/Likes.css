@@ -3,34 +3,37 @@
     width: 100%;
     box-sizing: border-box;
 }
-
+/*Like Page*/
 .likes h2 {
     margin-bottom: 2rem;
     text-align: center;
-    font-size: 2.5rem;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 2.8rem;
+    color: #F2F2F7;
+    font-weight: 700;
 }
 
 .likes-empty {
     text-align: center;
     padding: 4rem 2rem;
-    background-color: rgba(255, 255, 255, 0.05);
+    background: #3D405B;
     border-radius: 12px;
     margin: 2rem auto;
     max-width: 600px;
+    border: 1px solid #525560;
 }
 
 .likes-empty h2 {
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    color: #e50914;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    color: #F2F2F7;
+    font-weight: 600;
 }
 
 .likes-empty p {
-    color: #999;
+    color: #8E8E93;
     font-size: 1.2rem;
     line-height: 1.6;
+    font-weight: 400;
 }
 
 

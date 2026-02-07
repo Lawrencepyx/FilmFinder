@@ -1,8 +1,12 @@
 .main-content {
+    /*main page colour*/
     flex: 1;
     padding: 2rem;
     box-sizing: border-box;
     width: 100%;
     display: flex;
     flex-direction: column;
+    background: #26263a;
+    border-radius: 12px;
+    
 }

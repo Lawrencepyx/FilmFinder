@@ -24,10 +24,13 @@ html, body {
 }
 
 body {
+    /*overall macOS fonts*/
     margin: 0;
     width: 100%;
     min-height: 100vh;
     position: relative;
+    background: #1e1e2e;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 #root {
@@ -35,6 +38,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: transparent;
 }
 
 a {
@@ -52,6 +56,7 @@ h1 {
 }
 
 button {
+    /*buttons with macOS style*/
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
