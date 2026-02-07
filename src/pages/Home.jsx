@@ -69,8 +69,14 @@ function Home() {
             case 'rating':
                 sortedMovies.sort((a, b) => b.vote_average - a.vote_average)
                 break
+            case 'rating_low':
+                sortedMovies.sort((a, b) => a.vote_average - b.vote_average)
+                break
             case 'release_date':
                 sortedMovies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+                break
+            case 'release_date_old':
+                sortedMovies.sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
                 break
             default:
                 sortedMovies = [...allMovies] // Keep original order
@@ -104,7 +110,9 @@ function Home() {
                 >
                     <option value="default">Default</option>
                     <option value="rating">Rating (High to Low)</option>
+                    <option value="rating_low">Rating (Low to High)</option>
                     <option value="release_date">Release Date (Newest)</option>
+                    <option value="release_date_old">Release Date (Oldest)</option>
                 </select>
             </div>
             
