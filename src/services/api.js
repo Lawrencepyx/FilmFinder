@@ -19,3 +19,9 @@ export const findMovies = async(query) => {
     return data.results
 };
 
+export const fetchMoviesByGenre = async(genreId) => {
+    const response = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&sort_by=popularity.desc`)
+    const data = await response.json()
+    return data.results.slice(0, 5) // Return only top 5 movies
+};
+

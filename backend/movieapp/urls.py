@@ -8,4 +8,7 @@ urlpatterns = [
     
     # GET endpoint: Retrieve top 3 genres based on liked movies
     path('api/top-genres/', views.top_genres, name='top_genres'),
+    
+    # GET endpoint: Retrieve top 3 languages based on liked movies
+    path('api/top-languages/', views.top_languages, name='top_languages'),
 ]

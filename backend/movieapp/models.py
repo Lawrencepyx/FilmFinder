@@ -18,6 +18,7 @@ class LikedMovie(models.Model):
     overview = models.TextField(blank=True)  # Movie description/synopsis
     release_date = models.CharField(max_length=50, blank=True)  # Format: YYYY-MM-DD
     vote_average = models.FloatField(default=0)  # TMDB rating (0-10)
+    original_language = models.CharField(max_length=10, default='en', blank=True)  # ISO 639-1 language code
     
     # Timestamp when user liked this movie
     liked_at = models.DateTimeField(auto_now_add=True)

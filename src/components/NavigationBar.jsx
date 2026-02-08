@@ -10,7 +10,7 @@ function NavigationBar() {
         <div className="navbar-links">
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/likes" className="nav-link">Likes</Link>
-            <Link to="/top-genres" className="nav-link">Top Genres</Link>
+            <Link to="/top-genres" className="nav-link">Movie Wrapped</Link>
         </div>
     </nav>
 }

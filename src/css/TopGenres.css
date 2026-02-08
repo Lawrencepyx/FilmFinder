@@ -1,7 +1,18 @@
 .top-genres {
     padding: 2rem;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+}
+
+.wrapped-title {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-size: 3rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .top-genres h2 {
@@ -14,7 +25,26 @@
 .subtitle {
     text-align: center;
     color: #aaa;
+    margin-bottom: 3rem;
+}
+
+.wrapped-section {
+    margin-bottom: 4rem;
+}
+
+.recommendations-subtitle {
+    text-align: center;
+    color: #bbb;
+    font-size: 1rem;
     margin-bottom: 2rem;
+}
+
+.recommendations-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 .genres-list {
@@ -67,6 +97,54 @@
 }
 
 .genre-info p {
+    margin: 0.25rem 0 0 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+}
+
+/* Language cards styling */
+.languages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.language-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+.language-card:nth-child(1) {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.language-card:nth-child(2) {
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.language-card:nth-child(3) {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.language-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.language-info p {
     margin: 0.25rem 0 0 0;
     color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;

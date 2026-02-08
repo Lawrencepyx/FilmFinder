@@ -59,7 +59,8 @@ def sync_likes(request):
                 poster_path=movie.get('poster_path', ''),
                 overview=movie.get('overview', ''),
                 release_date=movie.get('release_date', ''),
-                vote_average=movie.get('vote_average', 0)
+                vote_average=movie.get('vote_average', 0),
+                original_language=movie.get('original_language', 'en')  # Save language code
             )
         
         return JsonResponse({'status': 'success', 'count': len(likes)})
@@ -119,4 +120,60 @@ def top_genres(request):
         })
     except Exception as e:
         #log and return server error
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
+@require_http_methods(["GET"])
+def top_languages(request):
+    """
+    API endpoint to calculate and return the top 3 most-liked languages.
+    
+    Response: {
+        "top_languages": [{"code": "en", "name": "English", "count": 10}, ...]
+    }
+    """
+    # Language code to name mapping
+    LANGUAGE_MAP = {
+        'en': 'English',
+        'es': 'Spanish',
+        'fr': 'French',
+        'de': 'German',
+        'it': 'Italian',
+        'ja': 'Japanese',
+        'ko': 'Korean',
+        'zh': 'Chinese',
+        'pt': 'Portuguese',
+        'ru': 'Russian',
+        'hi': 'Hindi',
+        'ar': 'Arabic',
+    }
+    
+    try:
+        liked_movies = LikedMovie.objects.all()
+        
+        if not liked_movies:
+            return JsonResponse({'top_languages': []})
+        
+        # Count language occurrences
+        language_counter = Counter()
+        for movie in liked_movies:
+            # Get original_language from the movie data if available
+            # We need to store this in the model first
+            lang = getattr(movie, 'original_language', 'en')
+            if lang:
+                language_counter[lang] += 1
+        
+        # Get top 3 languages
+        top_3 = language_counter.most_common(3)
+        
+        top_languages_data = [
+            {
+                'code': lang_code,
+                'name': LANGUAGE_MAP.get(lang_code, lang_code.upper()),
+                'count': count
+            }
+            for lang_code, count in top_3
+        ]
+        
+        return JsonResponse({'top_languages': top_languages_data})
+    except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
