@@ -4,7 +4,7 @@
     border-radius: 12px;
     overflow: hidden;
     background: #313244;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -127,6 +127,30 @@
     flex-direction: column;
     gap: 0.4rem;
     background: #1e1e2e;
+    cursor: pointer;
+}
+
+.movie-info:hover {
+    background: #252537;
+}
+
+.movie-description {
+    padding: 1rem;
+    background: #181825;
+    color: #cdd6f4;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    border-top: 1px solid #313244;
+}
+
+.movie-description p {
+    margin: 0;
+    color: #bac2de;
+}
+
+.movie-display.expanded {
+    width: 100%;
+    max-width: 400px;
 }
 
 .movie-info h3 {

@@ -94,14 +94,18 @@ ReactMovieApp/
 │   ├── contexts/           # React Context (MovieContext)
 │   ├── css/                # Component stylesheets
 │   └── services/           # API services (TMDB)
-├── backend/                # Django project settings
-├── movieapp/               # Django app for movie analytics
-│   ├── models.py          # LikedMovie model
-│   ├── views.py           # API views (sync_likes, top_genres)
-│   └── urls.py            # URL routing
-├── manage.py              # Django management script
-├── package.json           # Node dependencies
-└── vite.config.js         # Vite configuration
+├── backend/                # Django backend (all backend code)
+│   ├── settings.py         # Django project settings
+│   ├── urls.py             # Main URL configuration
+│   ├── wsgi.py / asgi.py   # WSGI/ASGI application
+│   └── movieapp/           # Django app for movie analytics
+│       ├── models.py       # LikedMovie model
+│       ├── views.py        # API views (sync_likes, top_genres)
+│       ├── urls.py         # App URL routing
+│       └── migrations/     # Database migrations
+├── manage.py               # Django management script
+├── package.json            # Node dependencies
+└── vite.config.js          # Vite configuration
 ```
 
 ## How It Works
