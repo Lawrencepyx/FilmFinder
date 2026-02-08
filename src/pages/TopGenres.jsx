@@ -4,16 +4,9 @@ import { useMovieContext } from "../contexts/MovieContext";
 import { fetchMoviesByGenre } from "../services/api";
 import MovieDisplay from "../components/MovieDisplay";
 
-/**
- * TopGenres Component (Movie Wrapped)
- * 
- * Displays the user's movie statistics including:
- * - Top 3 favorite genres
- * - Top 3 languages
- * - 5 recommended movies from #1 genre
- */
+
 function TopGenres() {
-    // State management
+    /*state management*/
     const [topGenres, setTopGenres] = useState([]);
     const [topLanguages, setTopLanguages] = useState([]);
     const [topDecades, setTopDecades] = useState([]);
@@ -21,7 +14,6 @@ function TopGenres() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [totalLikes, setTotalLikes] = useState(0);
-    
     const { likes } = useMovieContext();
 
     useEffect(() => {
@@ -29,7 +21,7 @@ function TopGenres() {
             try {
                 setLoading(true);
                 
-                // Sync likes to Django
+                /*sync likes to django*/
                 await fetch('http://localhost:8000/api/sync-likes/', {
                     method: 'POST',
                     headers: {
@@ -38,15 +30,15 @@ function TopGenres() {
                     body: JSON.stringify({ likes })
                 });
 
-                // Fetch top genres
+                /*get top genres*/
                 const genresResponse = await fetch('http://localhost:8000/api/top-genres/');
                 const genresData = await genresResponse.json();
                 
-                // Fetch top languages
+                /*get top languages*/
                 const languagesResponse = await fetch('http://localhost:8000/api/top-languages/');
                 const languagesData = await languagesResponse.json();
                 
-                // Fetch top decades
+                /*get top decades*/
                 const decadesResponse = await fetch('http://localhost:8000/api/decade-stats/');
                 const decadesData = await decadesResponse.json();
                 
@@ -54,7 +46,7 @@ function TopGenres() {
                     setTopGenres(genresData.top_genres);
                     setTotalLikes(genresData.total_likes || 0);
                     
-                    // Fetch recommendations for #1 genre
+                    /*get recommendations for #1 genre*/
                     if (genresData.top_genres.length > 0) {
                         const topGenreId = genresData.top_genres[0].id;
                         const movies = await fetchMoviesByGenre(topGenreId);
@@ -80,7 +72,7 @@ function TopGenres() {
         syncAndFetchData();
     }, [likes]);
 
-    // Loading state
+    /*loading state*/
     if (loading) {
         return (
             <div className="top-genres">
@@ -89,7 +81,7 @@ function TopGenres() {
         );
     }
 
-    // Empty/Error state
+    /*empty or error state*/
     if (error || topGenres.length === 0) {
         return (
             <div className="top-genres-empty">
@@ -99,13 +91,13 @@ function TopGenres() {
         );
     }
 
-    // Success state
+    /*success state*/
     return (
         <div className="top-genres">
             <h1 className="wrapped-title">🎬 Movie Wrapped 🎬</h1>
             <p className="subtitle">Based on {totalLikes} liked movies</p>
             
-            {/* Top 3 Genres */}
+            {/*top 3 Genres */}
             <section className="wrapped-section">
                 <h2>Your Top 3 Genres</h2>
                 <div className="genres-list">
@@ -121,7 +113,7 @@ function TopGenres() {
                 </div>
             </section>
 
-            {/* Top 3 Languages */}
+            {/* top 3 Languages */}
             {topLanguages.length > 0 && (
                 <section className="wrapped-section">
                     <h2>Your Top 3 Languages</h2>
@@ -139,7 +131,7 @@ function TopGenres() {
                 </section>
             )}
 
-            {/* Top 3 Decades */}
+            {/* top 3 Decades */}
             {topDecades.length > 0 && (
                 <section className="wrapped-section">
                     <h2>Your Favorite Decades</h2>
@@ -156,8 +148,7 @@ function TopGenres() {
                     </div>
                 </section>
             )}
-
-            {/* Recommendations based on top genre */}
+            {/* recommendations based on 1st genre */}
             {recommendations.length > 0 && (
                 <section className="wrapped-section">
                     <h2>Recommended {topGenres[0]?.name} Movies</h2>

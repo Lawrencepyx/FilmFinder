@@ -59,15 +59,15 @@
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-
+/*1st position*/
 .genre-card:nth-child(1) {
     background: #e574a5;
 }
-
+/*2nd position*/
 .genre-card:nth-child(2) {
     background: #4facfe;
 }
-
+/*3rd position*/
 .genre-card:nth-child(3) {
     background: #3ec998;
 }
@@ -109,7 +109,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-
+/*positions*/
 .language-card:nth-child(1) {
     background: #fa8c9f;
 }
@@ -151,7 +151,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-
+/*positions*/
 .decade-card:nth-child(1) {
     background: #8c7657;
 }
