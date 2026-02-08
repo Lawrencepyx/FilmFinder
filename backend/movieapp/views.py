@@ -95,7 +95,7 @@ def top_genres(request):
             })
         
         # Count how many times each genre appears across all liked movies
-        # A movie can have multiple genres, so we count each occurrence
+        # will double count movies
         genre_counter = Counter()
         for movie in liked_movies:
             for genre_id in movie.genre_ids:
@@ -153,7 +153,7 @@ def top_languages(request):
         if not liked_movies:
             return JsonResponse({'top_languages': []})
         
-        # Count language occurrences
+        # Count language appearances
         language_counter = Counter()
         for movie in liked_movies:
             # Get original_language from the movie data if available
@@ -175,5 +175,48 @@ def top_languages(request):
         ]
         
         return JsonResponse({'top_languages': top_languages_data})
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
+@require_http_methods(["GET"])
+def decade_stats(request):
+    """
+    API endpoint to calculate and return the top 3 most-liked decades.
+    
+    Response: {
+        "top_decades": [{"decade": "1990s", "count": 8}, ...]
+    }
+    """
+    try:
+        liked_movies = LikedMovie.objects.all()
+        
+        if not liked_movies:
+            return JsonResponse({'top_decades': []})
+        
+        #decade counting
+        decade_counter = Counter()
+        for movie in liked_movies:
+            if movie.release_date:
+                try:
+                    # get year from release_date (format: YYYY-MM-DD)
+                    year = int(movie.release_date.split('-')[0])
+                    # Calculate decade 
+                    decade = (year // 10) * 10
+                    decade_counter[decade] += 1
+                except (ValueError, IndexError):
+                    continue
+        
+        #get top 3 decades
+        top_3 = decade_counter.most_common(3)
+        
+        top_decades_data = [
+            {
+                'decade': f"{decade}s",
+                'count': count
+            }
+            for decade, count in top_3
+        ]
+        
+        return JsonResponse({'top_decades': top_decades_data})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)

@@ -3,16 +3,12 @@
     max-width: 1200px;
     margin: 0 auto;
 }
-
+/*MOVIE WRAPPED*/
 .wrapped-title {
     text-align: center;
     margin-bottom: 0.5rem;
     color: #fff;
     font-size: 3rem;
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .top-genres h2 {
@@ -31,7 +27,7 @@
 .wrapped-section {
     margin-bottom: 4rem;
 }
-
+/*Recommended Movies*/
 .recommendations-subtitle {
     text-align: center;
     color: #bbb;
@@ -46,7 +42,7 @@
     gap: 1rem;
     margin-top: 2rem;
 }
-
+/*Top Genre Display*/
 .genres-list {
     display: flex;
     flex-direction: column;
@@ -58,28 +54,22 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #6b7ab8;
     padding: 1.5rem 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.genre-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
 }
 
 .genre-card:nth-child(1) {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: #e574a5;
 }
 
 .genre-card:nth-child(2) {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: #4facfe;
 }
 
 .genre-card:nth-child(3) {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    background: #3ec998;
 }
 
 .rank {
@@ -114,28 +104,22 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #6b7ab8;
     padding: 1.5rem 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.language-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
 }
 
 .language-card:nth-child(1) {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    background: #fa8c9f;
 }
 
 .language-card:nth-child(2) {
-    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    background: #2c9daa;
 }
 
 .language-card:nth-child(3) {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    background: #cdeff0;
 }
 
 .language-info h3 {
@@ -145,6 +129,48 @@
 }
 
 .language-info p {
+    margin: 0.25rem 0 0 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+}
+
+/* Decade cards styling */
+.decades-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.decade-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: #6b7ab8;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.decade-card:nth-child(1) {
+    background: #8c7657;
+}
+
+.decade-card:nth-child(2) {
+    background: #db98e3;
+}
+
+.decade-card:nth-child(3) {
+    background: #4a6b8a;
+}
+
+.decade-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.decade-info p {
     margin: 0.25rem 0 0 0;
     color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;

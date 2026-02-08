@@ -16,6 +16,7 @@ function TopGenres() {
     // State management
     const [topGenres, setTopGenres] = useState([]);
     const [topLanguages, setTopLanguages] = useState([]);
+    const [topDecades, setTopDecades] = useState([]);
     const [recommendations, setRecommendations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -45,6 +46,10 @@ function TopGenres() {
                 const languagesResponse = await fetch('http://localhost:8000/api/top-languages/');
                 const languagesData = await languagesResponse.json();
                 
+                // Fetch top decades
+                const decadesResponse = await fetch('http://localhost:8000/api/decade-stats/');
+                const decadesData = await decadesResponse.json();
+                
                 if (genresData.top_genres) {
                     setTopGenres(genresData.top_genres);
                     setTotalLikes(genresData.total_likes || 0);
@@ -59,6 +64,10 @@ function TopGenres() {
                 
                 if (languagesData.top_languages) {
                     setTopLanguages(languagesData.top_languages);
+                }
+                
+                if (decadesData.top_decades) {
+                    setTopDecades(decadesData.top_decades);
                 }
             } catch (err) {
                 setError('Failed to load data. Make sure Django server is running on port 8000.');
@@ -123,6 +132,24 @@ function TopGenres() {
                                 <div className="language-info">
                                     <h3>{language.name}</h3>
                                     <p>{language.count} {language.count === 1 ? 'movie' : 'movies'}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            {/* Top 3 Decades */}
+            {topDecades.length > 0 && (
+                <section className="wrapped-section">
+                    <h2>Your Favorite Decades</h2>
+                    <div className="decades-list">
+                        {topDecades.map((decade, index) => (
+                            <div key={decade.decade} className="decade-card">
+                                <div className="rank">#{index + 1}</div>
+                                <div className="decade-info">
+                                    <h3>{decade.decade}</h3>
+                                    <p>{decade.count} {decade.count === 1 ? 'movie' : 'movies'}</p>
                                 </div>
                             </div>
                         ))}
