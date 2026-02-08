@@ -190,6 +190,17 @@
     font-weight: 600;
 }
 
+.view-description {
+    color: #64748b !important;
+    font-size: 0.75rem !important;
+    margin-top: auto;
+    
+}
+
+.movie-info:hover .view-description {
+    color: #94a3b8 !important;
+}
+
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.2); }

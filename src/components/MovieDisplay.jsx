@@ -38,6 +38,7 @@ function MovieDisplay({movie}) {
             <p className="release-date">{new Date(movie.release_date).getFullYear()}</p>
             <p className="rating">★ {movie.vote_average?.toFixed(1)}</p>
             {movie.runtime && <p className="runtime">{movie.runtime} min</p>}
+            <p className="view-description">{showDescription ? "Hide Description" : "View Description"}</p>
         </div>
         
         {/* Show description when card is clicked */}
