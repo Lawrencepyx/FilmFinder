@@ -5,6 +5,7 @@ import MovieDisplay from './components/MovieDisplay';
 import Home from "./pages/Home";
 import {Routes, Route} from "react-router-dom"
 import Likes from "./pages/Likes";
+import TopGenres from "./pages/TopGenres";
 import NavigationBar from "./components/NavigationBar";
 import { MovieProvider} from "./contexts/MovieContext";
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/likes" element={<Likes />}/>
+          <Route path="/top-genres" element={<TopGenres />}/>
         </Routes>
       </main>
     </MovieProvider>
