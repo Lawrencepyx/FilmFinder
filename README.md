@@ -15,8 +15,8 @@ A movie browsing app that uses The Movie Database (TMDB) API with a Django backe
 
 ## Tech Stack
 
-- **Frontend:** React + Vite, React Router, Context API for state management
-- **Backend:** Django + Django CORS Headers
+- **Frontend:** React + Vite, JavaScript, HTML, React Router, Context API for state management
+- **Backend:** Django + Django CORS Headers, Python
 - **API:** The Movie Database (TMDB) API
 - **Styling:** CSS
 
