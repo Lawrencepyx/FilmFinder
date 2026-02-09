@@ -86,8 +86,8 @@ A movie browsing app that uses The Movie Database (TMDB) API with a Django backe
 ## Project Structure
 
 ```
-backend        #backend code
-src            #frontend code
+backend/        #backend code
+src/            #frontend code
 ```
 
 ## How It Works
