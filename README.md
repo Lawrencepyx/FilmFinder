@@ -8,9 +8,9 @@ A movie browsing app that uses The Movie Database (TMDB) API with a Django backe
 - Search for movies
 - Like/unlike movies with heart button
 - View your liked movies collection
-- **Top Genres page** showing your 3 most-liked genres (powered by Django backend)
+- **Movie Wrapped** find out your 3 most-liked genres, preferred languages, movie suggestions, and release decades. (powered by Django backend)
 - Persistent likes stored in localStorage and synced to backend
-- Movie information including ratings, release year, and runtime
+- Movie information including ratings, release year, description, and runtime
 - Responsive design with compact movie cards
 
 ## Tech Stack
@@ -77,8 +77,7 @@ A movie browsing app that uses The Movie Database (TMDB) API with a Django backe
 3. Search for specific movies
 4. Click the ♡ button to like movies
 5. Visit the **Likes** page to see your liked movies
-6. Visit the **Top Genres** page to see your top 3 favorite genres calculated from your likes
-
+6. Visit the **Movie Wrapped** page to see data on the type of your liked movies, with suggestions, similar to Spoitfy Wrapped
 ## API Endpoints
 
 - `POST /api/sync-likes/` - Sync liked movies from frontend to backend
@@ -87,37 +86,15 @@ A movie browsing app that uses The Movie Database (TMDB) API with a Django backe
 ## Project Structure
 
 ```
-ReactMovieApp/
-├── src/                    # React source code
-│   ├── components/         # Reusable components (MovieDisplay, NavigationBar)
-│   ├── pages/              # Page components (Home, Likes, TopGenres)
-│   ├── contexts/           # React Context (MovieContext)
-│   ├── css/                # Component stylesheets
-│   └── services/           # API services (TMDB)
-├── backend/                # Django backend (all backend code)
-│   ├── settings.py         # Django project settings
-│   ├── urls.py             # Main URL configuration
-│   ├── wsgi.py / asgi.py   # WSGI/ASGI application
-│   └── movieapp/           # Django app for movie analytics
-│       ├── models.py       # LikedMovie model
-│       ├── views.py        # API views (sync_likes, top_genres)
-│       ├── urls.py         # App URL routing
-│       └── migrations/     # Database migrations
-├── manage.py               # Django management script
-├── package.json            # Node dependencies
-└── vite.config.js          # Vite configuration
+backend        #backend code
+src            #frontend code
 ```
 
 ## How It Works
 
 - Likes are stored in **localStorage** for instant frontend access
-- When you visit the **Top Genres** page, likes are synced to the Django backend
+- When you visit the **Movie Wrapped** page, likes are synced to the Django backend
 - Django calculates which genres appear most frequently in your liked movies
 - The top 3 genres are displayed with beautiful gradient cards showing the count
 - Genre mapping uses TMDB's official genre IDs
 
-## Notes
-
-- Make sure both servers are running for the Top Genres feature to work
-- TMDB API key is required for browsing and searching movies
-- The backend uses SQLite for development (easy setup, no configuration needed)
