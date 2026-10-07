@@ -1,7 +1,7 @@
 import "../css/TopGenres.css";
 import { useState, useEffect } from "react";
 import { useMovieContext } from "../contexts/MovieContext";
-import { fetchMoviesByGenre } from "../services/api";
+import { BACKEND_URL, fetchMoviesByGenre } from "../services/api";
 import MovieDisplay from "../components/MovieDisplay";
 
 
@@ -22,7 +22,7 @@ function TopGenres() {
                 setLoading(true);
                 
                 /*sync likes to django*/
-                await fetch('http://localhost:8000/api/sync-likes/', {
+                await fetch(`${BACKEND_URL}/api/sync-likes/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -31,15 +31,15 @@ function TopGenres() {
                 });
 
                 /*get top genres*/
-                const genresResponse = await fetch('http://localhost:8000/api/top-genres/');
+                const genresResponse = await fetch(`${BACKEND_URL}/api/top-genres/`);
                 const genresData = await genresResponse.json();
                 
                 /*get top languages*/
-                const languagesResponse = await fetch('http://localhost:8000/api/top-languages/');
+                const languagesResponse = await fetch(`${BACKEND_URL}/api/top-languages/`);
                 const languagesData = await languagesResponse.json();
                 
                 /*get top decades*/
-                const decadesResponse = await fetch('http://localhost:8000/api/decade-stats/');
+                const decadesResponse = await fetch(`${BACKEND_URL}/api/decade-stats/`);
                 const decadesData = await decadesResponse.json();
                 
                 if (genresData.top_genres) {

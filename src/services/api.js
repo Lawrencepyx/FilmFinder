@@ -1,5 +1,6 @@
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 const BASE_URL = "https://api.themoviedb.org/3"
+export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000"
 
 // Check if API key is available
 if (!API_KEY) {
@@ -24,4 +25,3 @@ export const fetchMoviesByGenre = async(genreId) => {
     const data = await response.json()
     return data.results.slice(0, 5) // Return only top 5 movies
 };
-
