@@ -52,8 +52,18 @@ def sync_likes(request):
         
         # Insert each liked movie into the database
         for movie in likes:
+            tmdb_id = movie.get('id') or movie.get('tmdb_id')
+            if tmdb_id is None:
+                return JsonResponse(
+                    {
+                        'status': 'error',
+                        'message': 'Each liked movie must include a TMDB id.',
+                    },
+                    status=400,
+                )
+
             LikedMovie.objects.create(
-                tmdb_id=movie.get('id'),
+                tmdb_id=tmdb_id,
                 title=movie.get('title', ''),
                 genre_ids=movie.get('genre_ids', []),  # Array of genre IDs from TMDB
                 poster_path=movie.get('poster_path', ''),
